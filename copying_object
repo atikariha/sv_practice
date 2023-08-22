@@ -1,0 +1,18 @@
+class first;
+    int data;
+endclass
+
+module tb;
+    first f1;
+    first p1;
+    initial begin 
+        f1 = new();
+        f1.data = 7;
+        p1 = new f1;
+        $display("f1.data = %d", f1.data);
+        $display("p1.data = %d", p1.data);
+        p1.data = 21;
+        $display("f1.data = %d", f1.data);
+        $display("p1.data = %d", p1.data);
+    end
+endmodule
