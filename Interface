@@ -1,0 +1,24 @@
+module and4(
+    input [3:0] a,
+    input [3:0] b,
+    output [4:0] c
+    );
+    assign c = a * b;
+endmodule
+
+interface and_if;
+    logic [3:0]a;
+    logic [3:0]b;
+    logic [4:0]c;
+endinterface
+
+module tb;
+    and_if aif();
+    and4 dut(.a(aif.a),.b(aif.b),.c(aif.c));
+    initial begin
+        aif.a=15;
+        aif.b=2;
+        #10
+        $display("a:%0b,b:%0b,c:%0b",aif.a,aif.b,aif.c);
+    end
+endmodule
