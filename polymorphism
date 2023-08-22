@@ -1,0 +1,33 @@
+class first;
+    int data =12;
+    virtual function display();
+        $display("First: value of data %0d",data);    
+    endfunction
+endclass
+
+class second extends first;
+    int temp =34;
+    function add();
+        $display("Second: value of temp %0d",temp+21);    
+    endfunction
+
+    function display();
+        // display();   
+        $display("Second: value of data %0d",data+2);    
+        //super.display(); 
+    endfunction
+endclass
+
+module tb;
+    first f;
+    second s;
+    initial begin
+        f=new();
+        s=new();
+        f=s;
+        f.display();
+        s.display();
+        s.add();
+    end
+endmodule
+ 
