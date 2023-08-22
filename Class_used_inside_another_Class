@@ -1,0 +1,36 @@
+class first;
+    local int data = 12;
+
+    task set(input int data);
+        this.data = data;
+    endtask
+
+    function int get();
+        return data;
+    endfunction
+
+    task display();
+        $display("data = %d", data);
+    endtask
+endclass
+
+class second;
+    first f1;
+    function new();
+        f1 = new();
+    endfunction
+endclass
+
+module tb;
+    second s;
+    first f2; // to call class first we cannot use f1 again 
+    initial begin
+        s = new();
+        f2 = new();
+        s.f1.display();
+        //f2.display();
+        s.f1.set(13);
+        $display("value of data =%0d",s.f1.get);
+        $display("value of data =%0d",f2.get); 
+    end
+endmodule
